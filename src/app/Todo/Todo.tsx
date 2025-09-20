@@ -1,11 +1,12 @@
 "use client";
 
 export type TodoItem = {
+  id: number;
   text: string;
   completed: boolean;
 };
 
-export const Todo = ({ text, completed }: TodoItem) => {
+export const Todo = ({ id, text, completed }: TodoItem) => {
   return (
     // TODO: finish me!
     <div className="flex flex-row gap-[32px]">

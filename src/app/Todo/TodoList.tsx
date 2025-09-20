@@ -8,14 +8,17 @@ export const TodoList = ({ todos }: { todos?: TodoItem[] }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [dummyTodos, setDummyTodos] = useState<TodoItem[]>([
     {
+      id: 1,
       text: "item 1",
       completed: false,
     },
     {
+      id: 2,
       text: "item 2",
       completed: false,
     },
     {
+      id: 3,
       text: "item 3",
       completed: true,
     },

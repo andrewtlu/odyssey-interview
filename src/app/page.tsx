@@ -43,7 +43,7 @@ const Home = async () => {
         </a>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://www.prisma.io/docs/orm/prisma-client"
+          href="https://www.prisma.io/docs/orm/prisma-client/queries/crud"
           target="_blank"
           rel="noopener noreferrer"
         >
