@@ -3,13 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "setup": "npm install && prisma migrate dev && prisma generate",
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "format": "prettier --write . --list-different"
+    "format": "prettier --write . --list-different",
+    "exploredb": "prisma studio"
   },
   "dependencies": {
+    "@prisma/client": "^6.16.2",
+    "@tabler/icons-react": "^3.35.0",
     "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
