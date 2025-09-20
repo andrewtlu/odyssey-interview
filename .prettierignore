@@ -27,3 +27,5 @@ dist
 CHANGELOG.md
 
 supabase
+
+/src/generated/prisma

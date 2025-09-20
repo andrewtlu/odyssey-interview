@@ -23,11 +23,11 @@ export const metadata: Metadata = {
  * @param prop.children - the page.tsx ReactNode
  * @returns the wrapped page
  */
-export default function RootLayout({
+const RootLayout = ({
   children,
 }: Readonly<{
   children: React.ReactNode;
-}>) {
+}>) => {
   return (
     <html lang="en">
       <body
@@ -37,4 +37,6 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;
