@@ -7,13 +7,13 @@ export const fetchAllTodos = async () => {
 };
 
 export const createTodo = async () => {
-  // TODO: finish me!
+  return null;
 };
 
 export const completeTodo = async () => {
-  // TODO: finish me!
+  return null;
 };
 
 export const deleteTodo = async () => {
-  // TODO: finish me!
+  return null;
 };

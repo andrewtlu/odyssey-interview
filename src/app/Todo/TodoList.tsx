@@ -4,8 +4,8 @@ import { IconPlus } from "@tabler/icons-react";
 import { Todo, TodoItem } from "./Todo";
 import { useState } from "react";
 
-export const TodoList = ({ todos }: { todos?: TodoItem[] }) => {
-  const dummyTodos: TodoItem[] = [
+export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
+  const todos: TodoItem[] = [
     {
       id: 1,
       text: "item 1",
@@ -29,13 +29,10 @@ export const TodoList = ({ todos }: { todos?: TodoItem[] }) => {
       <div className="font-medium text-2xl">My Todo List</div>
       {/* TODO: fix me! (task 1) */}
       <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg-content w-full px-2 py-1 rounded-md flex flex-row">
-        {
-          // use todo prop if provided, or use dummy todo if not provided
-          (todos ? todos : dummyTodos).map((val) => (
-            // TODO: fix me! (task 1)
-            <Todo {...val} />
-          ))
-        }
+        {todos.map((val) => (
+          // TODO: fix me! (task 1)
+          <Todo {...val} />
+        ))}
       </ul>
       <div className="flex gap-4 items-center flex-col sm:flex-row w-full">
         <input
