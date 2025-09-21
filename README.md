@@ -37,13 +37,19 @@ Finally, to view your current code in a dev server, run `npm run dev` and go to 
 
 ### Task 1 -- Warmup (Fix the list!)
 
-If you run the dev server, you'll see in the bottom left corner that the Next.js web tools is complaining about keys! (You'll also see this with the recommended eslint extension and when running `npm run lint`). Add a key prop to each Todo item so that Next.js knows when to rerender elements.
+If you run the dev server, you'll see in the bottom left corner that the Next.js web tools is complaining about keys! (You'll also see this with the recommended eslint extension and when running `npm run lint`). Add a key prop to each `Todo` item so that Next.js knows when to rerender elements.
 
-Additionally, it looks like the previous code author made a mistake in the CSS - ensure that the Todo items are displayed as a top-to bottom list, instead of in a row.
+Additionally, it looks like the previous code author made a mistake in the CSS - ensure that the `Todo` items are displayed as a top-to bottom list, instead of in a row.
+
+I've added some handy comments of the stuff that needs to change, just to get you warmed up.
 
 Helpful resources: [(react key warnings)](https://react.dev/link/warning-keys) [(tailwind flex)](https://tailwindcss.com/docs/flex-direction)
 
-### Task 2 --
+### Task 2 -- Todo styling
+
+Currently, the `Todo` component is very simple and frankly not very nice looking. Update the `Todo` component to be a distinctly visible in the list (at minimum, a different background color compared to the list's background) and indicate whether a task has been completed or not (at minimum, shows a checkbox that shows completed status and is slightly transparent if completed). If you end up not using the `id` property, suppress the eslint warning.
+
+Helpful resources: [(tailwind background colors)](https://tailwindcss.com/docs/background-color) [(tailwind opacity)](https://tailwindcss.com/docs/opacity) [(suggested checkbox html element)](https://react.dev/reference/react-dom/components/input)
 
 ## Submission
 

@@ -25,10 +25,12 @@ export const TodoList = ({ todos }: { todos?: TodoItem[] }) => {
   return (
     <>
       <div className="font-medium text-2xl">My Todo List</div>
+      {/* TODO: fix me! (task 1) */}
       <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg-content w-full px-2 py-1 rounded-md flex flex-row">
         {
           // use todo prop if provided, or use dummy todo if not provided
           (todos ? todos : dummyTodos).map((val) => (
+            // TODO: fix me! (task 1)
             <Todo {...val} />
           ))
         }
