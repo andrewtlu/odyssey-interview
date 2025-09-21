@@ -2,11 +2,9 @@
 
 import { IconPlus } from "@tabler/icons-react";
 import { Todo, TodoItem } from "./Todo";
-import { useState } from "react";
 
 export const TodoList = ({ todos }: { todos?: TodoItem[] }) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [dummyTodos, setDummyTodos] = useState<TodoItem[]>([
+  const dummyTodos: TodoItem[] = [
     {
       id: 1,
       text: "item 1",
@@ -22,12 +20,12 @@ export const TodoList = ({ todos }: { todos?: TodoItem[] }) => {
       text: "item 3",
       completed: true,
     },
-  ]);
+  ];
 
   return (
     <>
       <div className="font-medium text-2xl">My Todo List</div>
-      <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg-content w-full px-2 py-1 rounded-md">
+      <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg-content w-full px-2 py-1 rounded-md flex flex-row">
         {
           // use todo prop if provided, or use dummy todo if not provided
           (todos ? todos : dummyTodos).map((val) => (
