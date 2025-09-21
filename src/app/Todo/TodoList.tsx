@@ -27,7 +27,7 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
   return (
     <>
       <div className="font-medium text-2xl">My Todo List</div>
-      <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg-content w-full px-2 py-1 rounded-md flex flex-col">
+      <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg-gray-200 w-full px-2 py-1 rounded-md flex flex-col gap-2">
         {todos.map((val) => (
           <Todo {...val} key={val.id} />
         ))}
