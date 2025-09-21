@@ -51,6 +51,30 @@ Currently, the `Todo` component is very simple and frankly not very nice looking
 
 Helpful resources: [(tailwind background colors)](https://tailwindcss.com/docs/background-color) [(tailwind opacity)](https://tailwindcss.com/docs/opacity) [(suggested checkbox html element)](https://react.dev/reference/react-dom/components/input)
 
+### Task 3 -- Todo state + New Todos
+
+Now that we have a properly styled `Todo` component, let's add some proper functionality to the app.
+
+Refactor the `dummyTodos` variable to be a React state, so that when `dummyTodos` is updated the list will rerender on the website.
+
+Once you convert `dummyTodos` to a state, add functionality to the `Add Item` button that adds a new item to `dummyTodos` when it is clicked, using the user's input text; if the button is pressed without any text, do nothing.
+
+Helpful resources: [(react states)](https://react.dev/reference/react/useState) [(react array/object states)](https://react.dev/reference/react/useState#updating-objects-and-arrays-in-state)
+
+### Task 4 -- Complete + Delete Todos
+
+Now that we can add todos, let's finish up the component by implementing functionality to complete todos and delete todos.
+
+This will be a little complicated, since the completion/deletion functionality should be set in the `Todo` component, even though the state is stored in the `TodoList` component. You can go about it in a couple of ways (for your reference, 1 & 2 are referred to as prop drilling):
+
+1. Write two generic functions in `TodoList` that take an `id` parameter and returns a function that will do the proper completion/deletion state update on `dummyTodos`, pass those functions into `Todo` as another prop, and call the functions in `Todo` (the function defined in the `TodoList` component will have access to variables defined in `TodoList`!)
+2. Directly pass the necessary state updating function(s) to `Todo`, and write the completion/deletion logic in `Todo`
+3. (not recommended here but most "scalable" and "best practice") Extract the `dummyTodos` state into a context and update any usages of `dummyTodos` to use the context's state. Then, use the context within `Todo` to update `dummyTodos`
+
+Add a deletion button to all `Todo` elements, and make it so that clicking on the `Todo` item toggles task completion and clicking on the `Todo`'s delete button deletes the `Todo` entirely, regardless of if it was completed or not.
+
+Helpful resources: [(react contexts NOT RECOMMENDED)](https://react.dev/learn/passing-data-deeply-with-context#replace-prop-drilling-with-context) [(nextjs contexts + server/client side rendering NOT RECOMMENDED)](https://nextjs.org/docs/app/getting-started/server-and-client-components#context-providers) [(nesting click events & stopping event propogation)](https://stackoverflow.com/questions/38619981/how-can-i-prevent-event-bubbling-in-nested-react-components-on-click)
+
 ## Submission
 
 ## Misc
