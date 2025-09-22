@@ -40,12 +40,25 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
     setNewTodoText("");
   }
 
+  const toggleCompletion = (id: number) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      )
+    );
+  };
+
+  const toggleDeletion = (id: number) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+
   return (
     <>
       <div className="font-medium text-2xl">My Todo List</div>
       <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg-gray-200 w-full px-2 py-1 rounded-md flex flex-col gap-2">
         {todos.map((val) => (
-          <Todo {...val} key={val.id} />
+          <Todo todo={val} key={val.id} onToggle={toggleCompletion} onDelete={toggleDeletion} />
         ))}
       </ul>
       <div className="flex gap-4 items-center flex-col sm:flex-row w-full">
