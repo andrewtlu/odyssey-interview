@@ -1,5 +1,7 @@
 "use client";
 
+/* the information about the todo item,
+  imported to TodoList.tsx  */
 export type TodoItem = {
   id: number;
   text: string;

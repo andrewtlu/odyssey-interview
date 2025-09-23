@@ -35,7 +35,11 @@ Secondly, open the cloned repository in an editor of your choice. Make a copy of
 
 Thirdly, open the project's base directory in the terminal of your choice and run `npm run setup`. This installs the necessary dependencies and initializes a database for us.
 
+// Sun, Sept 21: setup successfully
+
 Lastly, to view your current code in a dev server, run `npm run dev` and go to [`localhost:3000/`](http://localhost:3000/) to view your current code in website form. Try to only have this command running in one terminal, or you may have some weird behavior occur.
+
+// Mon, Sept 22: localhost:3000 display webpage successful
 
 ## Tasks
 
@@ -47,7 +51,11 @@ Additionally, it looks like the previous code author made a mistake in the CSS -
 
 There are some handy comments of the stuff that needs to change just to get you warmed up. You can search for `(task 1)` to locate these files quickly, or find them in the `src/app/Todo/` folder. (P.S. it is courteous to remove TODO comments once they're done :) )
 
+// Mon, Sept 22: fixed key, flex-col issue
+
 Helpful resources: [(react key warnings)](https://react.dev/link/warning-keys) [(tailwind flex)](https://tailwindcss.com/docs/flex-direction)
+
+// Todo next: ------------------------------------------------
 
 ### Task 2 -- Todo Styling
 
