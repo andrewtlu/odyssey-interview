@@ -22,35 +22,6 @@ const Home = async () => {
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start w-xl">
         <TodoList />
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/docs"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <IconBrandNextjs />
-          Next.js Docs
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://tailwindcss.com/docs/styling-with-utility-classes"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <IconBrandTailwind />
-          Tailwind Docs
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://www.prisma.io/docs/orm/prisma-client/queries/crud"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <IconBrandPrisma />
-          Prisma Docs
-        </a>
-      </footer>
     </div>
   );
 };
