@@ -38,7 +38,7 @@ export const Todo = ({
         className="mt-1"
       />
       <div
-        className={`flex-grow cursor-pointer ${completed ? "line-through text-gray-500" : ""} ${disabled ? "cursor-not-allowed" : ""}`}
+        className={`flex-grow cursor-pointer ${completed ? "line-through" : ""} ${disabled ? "cursor-not-allowed" : ""} text-black`}
         onClick={disabled ? undefined : onToggle}
       >
         {text}
