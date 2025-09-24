@@ -11,7 +11,7 @@ import {
   IconBrandTailwind,
 } from "@tabler/icons-react";
 import { TodoList } from "./Todo/TodoList";
-import { fetchAllTodos } from "./Database/action";
+import { fetchAllTodos } from "./Database/actions";
 
 /**
  * Next.js's AppRouter uses the directory structure of `app/` to define routes, with `page.tsx` defining a page along a route.
