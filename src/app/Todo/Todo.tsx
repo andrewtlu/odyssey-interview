@@ -14,27 +14,36 @@ interface TodoProps extends TodoItem {
   disabled?: boolean;
 }
 
-export const Todo = ({ id, text, completed, onToggle, onDelete, disabled = false }: TodoProps) => {
+export const Todo = ({
+  id,
+  text,
+  completed,
+  onToggle,
+  onDelete,
+  disabled = false,
+}: TodoProps) => {
   return (
-    <div className={`flex flex-row gap-[32px] p-3 mb-2 rounded-lg border ${
-      completed 
-        ? 'bg-gray-100 opacity-60 border-gray-300' 
-        : 'bg-white border-gray-200'
-    } ${disabled ? 'opacity-50' : ''}`}>
-      <input 
-        type="checkbox" 
-        checked={completed} 
+    <div
+      className={`flex flex-row gap-[32px] p-3 mb-2 rounded-lg border ${
+        completed
+          ? "bg-gray-100 opacity-60 border-gray-300"
+          : "bg-white border-gray-200"
+      } ${disabled ? "opacity-50" : ""}`}
+    >
+      <input
+        type="checkbox"
+        checked={completed}
         onChange={onToggle}
         disabled={disabled}
         className="mt-1"
       />
-      <div 
-        className={`flex-grow cursor-pointer ${completed ? 'line-through text-gray-500' : ''} ${disabled ? 'cursor-not-allowed' : ''}`}
+      <div
+        className={`flex-grow cursor-pointer ${completed ? "line-through text-gray-500" : ""} ${disabled ? "cursor-not-allowed" : ""}`}
         onClick={disabled ? undefined : onToggle}
       >
         {text}
       </div>
-      <button 
+      <button
         onClick={(e) => {
           e.stopPropagation();
           onDelete();
