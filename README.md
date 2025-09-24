@@ -55,13 +55,17 @@ There are some handy comments of the stuff that needs to change just to get you 
 
 Helpful resources: [(react key warnings)](https://react.dev/link/warning-keys) [(tailwind flex)](https://tailwindcss.com/docs/flex-direction)
 
-// Todo next: ------------------------------------------------
-
 ### Task 2 -- Todo Styling
 
 Currently, the `Todo` component is very simple and frankly not very nice looking. Update the `Todo` component to be a distinctly visible in the list (at minimum, a different background color compared to the list's background) and indicate whether a task has been completed or not (at minimum, shows a checkbox that shows completed status and is slightly transparent if completed). If you end up not using the `id` property, suppress the eslint warning.
 
+1. change bg color
+2. add check box + toggle
+3. transparent toggled items
+
 Helpful resources: [(tailwind background colors)](https://tailwindcss.com/docs/background-color) [(tailwind opacity)](https://tailwindcss.com/docs/opacity) [(suggested checkbox html element)](https://react.dev/reference/react-dom/components/input)
+
+// Todo next: ------------------------------------------------
 
 ### Task 3 -- Todo State + New Todos
 
