@@ -27,8 +27,8 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
   return (
     <>
       <div className="font-medium text-2xl">My Todo List</div>
-      {/* TODO: fix me! (task 1) */}
-      <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg-content w-full px-2 py-1 rounded-md flex flex-row">
+      
+      <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg-content w-full px-2 py-1 rounded-md flex flex-col">
         {todos.map((val) => (
           // TODO: fix me! (task 1)
           <Todo {...val} />
