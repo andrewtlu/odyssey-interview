@@ -35,11 +35,7 @@ Secondly, open the cloned repository in an editor of your choice. Make a copy of
 
 Thirdly, open the project's base directory in the terminal of your choice and run `npm run setup`. This installs the necessary dependencies and initializes a database for us.
 
-// Sun, Sept 21: setup successfully
-
 Lastly, to view your current code in a dev server, run `npm run dev` and go to [`localhost:3000/`](http://localhost:3000/) to view your current code in website form. Try to only have this command running in one terminal, or you may have some weird behavior occur.
-
-// Mon, Sept 22: localhost:3000 display webpage successful
 
 ## Tasks
 
@@ -50,8 +46,6 @@ If you run the dev server, you'll see in the bottom left corner that the Next.js
 Additionally, it looks like the previous code author made a mistake in the CSS - ensure that the `Todo` items are displayed as a top-to bottom list, instead of in a row.
 
 There are some handy comments of the stuff that needs to change just to get you warmed up. You can search for `(task 1)` to locate these files quickly, or find them in the `src/app/Todo/` folder. (P.S. it is courteous to remove TODO comments once they're done :) )
-
-// Mon, Sept 22: fixed key, flex-col issue
 
 Helpful resources: [(react key warnings)](https://react.dev/link/warning-keys) [(tailwind flex)](https://tailwindcss.com/docs/flex-direction)
 
@@ -65,8 +59,6 @@ Currently, the `Todo` component is very simple and frankly not very nice looking
 
 Helpful resources: [(tailwind background colors)](https://tailwindcss.com/docs/background-color) [(tailwind opacity)](https://tailwindcss.com/docs/opacity) [(suggested checkbox html element)](https://react.dev/reference/react-dom/components/input)
 
-// Todo next: ------------------------------------------------
-
 ### Task 3 -- Todo State + New Todos
 
 Now that we have a properly styled `Todo` component, let's add some proper functionality to the app.
@@ -76,6 +68,8 @@ Refactor the `todos` variable to be a React state, so that when `todos` is updat
 Once you convert `todos` to a state, add functionality to the `Add Item` button that adds a new item to `todos` when it is clicked, using the user's input text; if the button is pressed without any text, do nothing.
 
 Helpful resources: [(react states)](https://react.dev/reference/react/useState) [(react array/object states)](https://react.dev/reference/react/useState#updating-objects-and-arrays-in-state)
+
+// Todo next: ------------------------------------------------
 
 ### Task 4 -- Complete + Delete Todos
 
