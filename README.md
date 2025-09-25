@@ -53,6 +53,10 @@ Helpful resources: [(react key warnings)](https://react.dev/link/warning-keys) [
 
 Currently, the `Todo` component is very simple and frankly not very nice looking. Update the `Todo` component to be a distinctly visible in the list (at minimum, a different background color compared to the list's background) and indicate whether a task has been completed or not (at minimum, shows a checkbox that shows completed status and is slightly transparent if completed). If you end up not using the `id` property, suppress the eslint warning.
 
+1. change bg color
+2. add check box + toggle
+3. transparent toggled items
+
 Helpful resources: [(tailwind background colors)](https://tailwindcss.com/docs/background-color) [(tailwind opacity)](https://tailwindcss.com/docs/opacity) [(suggested checkbox html element)](https://react.dev/reference/react-dom/components/input)
 
 ### Task 3 -- Todo State + New Todos
@@ -64,6 +68,8 @@ Refactor the `todos` variable to be a React state, so that when `todos` is updat
 Once you convert `todos` to a state, add functionality to the `Add Item` button that adds a new item to `todos` when it is clicked, using the user's input text; if the button is pressed without any text, do nothing.
 
 Helpful resources: [(react states)](https://react.dev/reference/react/useState) [(react array/object states)](https://react.dev/reference/react/useState#updating-objects-and-arrays-in-state)
+
+// Todo next: ------------------------------------------------
 
 ### Task 4 -- Complete + Delete Todos
 
