@@ -5,23 +5,7 @@ import { Todo, TodoItem } from "./Todo";
 import { useState } from "react";
 
 export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
-  const todos: TodoItem[] = [
-    {
-      id: 1,
-      text: "item 1",
-      completed: false,
-    },
-    {
-      id: 2,
-      text: "item 2",
-      completed: false,
-    },
-    {
-      id: 3,
-      text: "item 3",
-      completed: true,
-    },
-  ];
+  const [todos, setTodos] = useState<TodoItem[]>(initialTodos || []);
   const [newTodoText, setNewTodoText] = useState("");
 
   return (
@@ -39,7 +23,16 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
           value={newTodoText}
           onChange={(e) => setNewTodoText(e.target.value)}
         />
-        <button className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto hover:cursor-pointer">
+        <button
+          className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto hover:cursor-pointer"
+          onClick={() => {
+            if (newTodoText.trim() === "") return;
+            setTodos([
+              ...todos,
+              { id: todos.length + 1, text: newTodoText, completed: false },
+            ]);
+          }}
+        >
           <IconPlus />
           Add Item
         </button>
