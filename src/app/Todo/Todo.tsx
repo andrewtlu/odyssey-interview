@@ -36,7 +36,8 @@ export const Todo = ({ id, text, completed, onToggle, onDelete }: TodoItem) => {
       <div className="text-white font-medium tracking-wide">{text}</div>
       <button
         className="ml-auto px-2 py-0 rounded-lg 
-             bg-white active:bg-red-500
+             bg-white hover:bg-red-500 active:bg-red-600
+             cursor-pointer
              text-black font-semibold text-md
              shadow-md hover:shadow-lg
              hover:scale-105 active:scale-95
