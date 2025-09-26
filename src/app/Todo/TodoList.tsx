@@ -35,6 +35,21 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
       </ul>
       <div className="flex gap-4 items-center flex-col sm:flex-row w-full">
         <input
+          onKeyDown={(e) => {
+            if (e.key !== "Enter") return;
+            if (newTodoText.trim() === "") return;
+            setNewTodoText("");
+            setTodos([
+              ...todos,
+              {
+                id: todos.length + 1,
+                text: newTodoText,
+                completed: false,
+                onToggle: handleToggle,
+                onDelete: handleDelete,
+              },
+            ]);
+          }}
           placeholder="Todo text"
           className="rounded-full border-solid border-2 font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto bg-background text-foreground grow"
           value={newTodoText}
