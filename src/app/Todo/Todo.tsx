@@ -16,7 +16,7 @@ export const Todo = ({ id, text, completed, onToggle, onDelete }: TodoItem) => {
   return (
     <div
       onClick={() => {
-        setClicked(!clicked);
+        setClicked(!completed);
         onToggle(id);
       }}
       className={`flex flex-row items-center gap-3 
