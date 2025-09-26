@@ -8,7 +8,7 @@ export type TodoItem = {
 
 export const Todo = ({ id, text, completed }: TodoItem) => {
   return (
-    <div className="flex flex-row gap-[32px]">
+    <div className="flex flex-row gap-[32px] bg-blue-100">
       <div>{text}</div>
     </div>
   );
