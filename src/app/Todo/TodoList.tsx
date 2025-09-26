@@ -26,11 +26,11 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
 
   return (
     <>
-      <div className="font-medium text-2xl">My Todo List</div>
-      {/* TODO: fix me! (task 1) */}
+      <div className="font-medium text-2xl text-align: center">My Todo List</div>
+      
       <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg-content w-full px-2 py-1 rounded-md flex flex-col">
         {todos.map((val) => (
-          // TODO: fix me! (task 1)
+          // below I added a key prop to each Todo item 
           <Todo 
             key= {val.id}
             id={val.id}
