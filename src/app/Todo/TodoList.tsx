@@ -8,12 +8,20 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
   const [todos, setTodos] = useState<TodoItem[]>(initialTodos || []);
   const [newTodoText, setNewTodoText] = useState("");
 
+  function handleToggle(id: number) {
+    setTodos(todos.map(todo => todo.id === id ? {...todo, completed: !todo.completed} : todo));
+  }
+
+  function handleDelete(id: number) {
+    setTodos(todos.filter(todo => todo.id !== id));
+  }
+
   return (
     <>
       <div className="font-medium text-2xl">My Todo List</div>
       <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg-content w-full px-2 py-1 rounded-md flex flex-col">
         {todos.map((val) => (
-          <Todo key={val.id} {...val} />
+          <Todo key={val.id} {...val} onToggle={handleToggle} onDelete={handleDelete}/>
         ))}
       </ul>
       <div className="flex gap-4 items-center flex-col sm:flex-row w-full">
