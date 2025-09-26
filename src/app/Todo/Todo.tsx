@@ -34,7 +34,20 @@ export const Todo = ({ id, text, completed, onToggle, onDelete }: TodoItem) => {
         className="w-4 h-4 accent-teal-500 cursor-pointer"
       />
       <div className="text-white font-medium tracking-wide">{text}</div>
-      <button onClick={() => onDelete(id)}>X</button>
+      <button
+        className="ml-auto px-2 py-0 rounded-lg 
+             bg-white active:bg-red-500
+             text-black font-semibold text-md
+             shadow-md hover:shadow-lg
+             hover:scale-105 active:scale-95
+             transition-all duration-200 ease-out"
+        onClick={(e) => {
+          e.stopPropagation();
+          onDelete(id);
+        }}
+      >
+        ✕
+      </button>
     </div>
   );
 };
