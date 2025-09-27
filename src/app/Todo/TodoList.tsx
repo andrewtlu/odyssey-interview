@@ -5,7 +5,7 @@ import { Todo, TodoItem } from "./Todo";
 import { useState } from "react";
 
 export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
-  const todos: TodoItem[] = [
+  const [todos, setTodos] = useState<TodoItem[]>([
     {
       id: 1,
       text: "item 1",
@@ -21,8 +21,20 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
       text: "item 3",
       completed: true,
     },
-  ];
+  ]);
   const [newTodoText, setNewTodoText] = useState("");
+
+  const addTodo = () => {
+    if (newTodoText.trim()) {
+      const newTodo: TodoItem = {
+        id: Math.max(...todos.map((t) => t.id)) + 1,
+        text: newTodoText.trim(),
+        completed: false,
+      };
+      setTodos([...todos, newTodo]);
+      setNewTodoText("");
+    }
+  };
 
   return (
     <>
@@ -39,7 +51,10 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
           value={newTodoText}
           onChange={(e) => setNewTodoText(e.target.value)}
         />
-        <button className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto hover:cursor-pointer">
+        <button
+          onClick={addTodo}
+          className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto hover:cursor-pointer"
+        >
           <IconPlus />
           Add Item
         </button>
