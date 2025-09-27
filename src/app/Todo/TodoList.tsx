@@ -17,12 +17,18 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
   const addNewTodo = () => {
     const text = newTodoText.trim();
     if (!text) return;
-
-    setTodos((prev) => [
-      ...prev,
-      { id: todos.length+1, text, completed: false },
-    ]);
+    setTodos((prev) => prev.concat({ id: todos.length+ 1, text, completed: false }));
     setNewTodoText("");
+  };
+
+  const toggleTodo = (id: number) => {
+    setTodos((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
+    );
+  };
+
+  const deleteTodo = (id: number) => {
+    setTodos((prev) => prev.filter((t) => t.id !== id));
   };
 
   return (
@@ -31,7 +37,7 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
 
       <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg- w-full px-2 py-1 rounded-md flex flex-col">
         {todos.map((val) => (
-          <Todo key={val.id} id={val.id} text={val.text} completed={val.completed} />
+          <Todo key={val.id} id={val.id} text={val.text} completed={val.completed} onClick={toggleTodo} onDelete={deleteTodo}/>
         ))}
       </ul>
       <div className="flex gap-4 items-center flex-col sm:flex-row w-full">

@@ -6,9 +6,16 @@ export type TodoItem = {
   completed: boolean;
 };
 
-export const Todo = ({ id: _id, text, completed }: TodoItem) => {
+
+type TodoProps = TodoItem & {
+  onClick: (id: number) => void;
+  onDelete: (id: number) => void;
+};
+
+export const Todo = ({ id, text, completed, onClick, onDelete }: TodoProps) => {
   return (
-    <li
+    <div
+    onClick={() => onClick(id)}
       className="px-2 flex items-center justify-between gap-2 py-2 rounded-md cursor-pointer"
       style={{
         outline: "1px solid #0f0e0f",
@@ -39,7 +46,21 @@ export const Todo = ({ id: _id, text, completed }: TodoItem) => {
         </span>
       </label>
 
-      {completed && <span className="ml-auto text-lg">✔</span>}
-    </li>
+        <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onDelete(id);
+        }}
+        style={{
+          marginLeft: "auto",
+          background: "transparent",
+          fontSize: "18px",
+          lineHeight: 1,
+          cursor: "pointer",
+        }}
+      >
+        ×
+      </button>
+    </div>
   );
 };
