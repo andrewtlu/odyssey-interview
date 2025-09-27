@@ -3,12 +3,14 @@
 import { IconPlus } from "@tabler/icons-react";
 import { Todo, TodoItem } from "./Todo";
 import { useState } from "react";
+import { createTodo, completeTodo, deleteTodo } from "../Database/actions";
 
 export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
   const [todos, setTodos] = useState<TodoItem[]>(initialTodos || []);
   const [newTodoText, setNewTodoText] = useState("");
 
   function handleToggle(id: number) {
+    completeTodo(id);
     setTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo,
@@ -17,7 +19,18 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
   }
 
   function handleDelete(id: number) {
+    deleteTodo(id);
     setTodos(todos.filter((todo) => todo.id !== id));
+  }
+
+  async function handleAdd() {
+    if (newTodoText.trim() === "") return;
+    const newTodo = await createTodo(newTodoText);
+    setTodos([
+      ...todos,
+      { ...newTodo, onToggle: handleToggle, onDelete: handleDelete },
+    ]);
+    setNewTodoText("");
   }
 
   return (
@@ -35,21 +48,7 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
       </ul>
       <div className="flex gap-4 items-center flex-col sm:flex-row w-full">
         <input
-          onKeyDown={(e) => {
-            if (e.key !== "Enter") return;
-            if (newTodoText.trim() === "") return;
-            setNewTodoText("");
-            setTodos([
-              ...todos,
-              {
-                id: todos.length + 1,
-                text: newTodoText,
-                completed: false,
-                onToggle: handleToggle,
-                onDelete: handleDelete,
-              },
-            ]);
-          }}
+          onKeyDown={(e) => e.key === "Enter" && handleAdd()}
           placeholder="Todo text"
           className="rounded-full border-solid border-2 font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto bg-background text-foreground grow"
           value={newTodoText}
@@ -57,20 +56,7 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
         />
         <button
           className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto hover:cursor-pointer"
-          onClick={() => {
-            if (newTodoText.trim() === "") return;
-            setNewTodoText("");
-            setTodos([
-              ...todos,
-              {
-                id: todos.length + 1,
-                text: newTodoText,
-                completed: false,
-                onToggle: handleToggle,
-                onDelete: handleDelete,
-              },
-            ]);
-          }}
+          onClick={handleAdd}
         >
           <IconPlus />
           Add Item
