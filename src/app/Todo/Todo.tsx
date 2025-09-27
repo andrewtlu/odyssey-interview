@@ -24,7 +24,7 @@ export const Todo = ({ id, text, completed, onToggle, onDelete }: TodoItem) => {
     bg-gradient-to-r from-blue-500 to-teal-600
     hover:scale-[1.01] active:scale-[0.99] 
     transition-all duration-300 ease-out
-    ${clicked ? "opacity-70 ring-2 ring-teal-400" : "opacity-100"}
+    ${completed ? "opacity-70 ring-2 ring-teal-400" : "opacity-100"}
   `}
     >
       <input
