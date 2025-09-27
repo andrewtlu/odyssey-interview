@@ -6,12 +6,12 @@ export type TodoItem = {
   completed: boolean;
 };
 
-export const Todo = ({ id, text, completed }: TodoItem) => {
+export const Todo = ({ id, text, completed, onDelete, onComplete }: TodoItem & {onDelete: () => void; onComplete: () => void;})=> {
   return (
     <div className="flex flex-row gap-[32px] rounded-lg bg-blue-100 border-2 border-black text-black">
-      <input type="checkbox" checked={completed}  />
+      <input type="checkbox" checked={completed}  onChange={onComplete}/>
       <div className="flex-1">{text}</div>
-      <button className ="border-2 border-black text-red-500 bg-gray-100 rounded-lg hover:bg-black"> Delete</button>
+      <button onClick={onDelete} className ="border-2 border-black text-red-500 bg-gray-100 rounded-lg hover:bg-black"> Delete</button>
     </div>
   );
 };

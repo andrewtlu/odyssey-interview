@@ -35,8 +35,20 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
 
   setTodos([...todos, newTodo]);
   setNewTodoText("");
+  
 };
 
+const completeToDo = (id: number) => {
+    setTodos(
+      todos.map(todo =>
+        todo.id === id ? {...todo, completed: !todo.completed} : todo
+      )
+    );
+  };
+
+  const deleteToDo = (id: number) => {
+    setTodos(todos.filter(todo => todo.id !==id));
+  };
 
   return (
     <>
@@ -50,6 +62,8 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
             id={val.id}
             text={val.text}
             completed={val.completed}
+            onDelete={() => deleteToDo(val.id)}
+            onComplete={() => completeToDo(val.id)}
            />
         ))}
       </ul>
@@ -63,7 +77,7 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
           onChange={(e) => setNewTodoText(e.target.value)}
         />
 
-        
+
         <button onClick={handleAddTodo}
         className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto hover:cursor-pointer">
           <IconPlus />
