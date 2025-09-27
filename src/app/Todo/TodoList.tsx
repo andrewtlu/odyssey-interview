@@ -1,52 +1,39 @@
 "use client";
 
-import { IconPlus } from "@tabler/icons-react";
+import { createTodo, completeTodo, deleteTodo, fetchAllTodos, } from "../Database/actions";
 import { Todo, TodoItem } from "./Todo";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { IconPlus } from "@tabler/icons-react";
 
 export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
   const [todos, setTodos]= useState<TodoItem[]> ([
-    {
-      id: 1,
-      text: "item 1",
-      completed: false,
-    },
-    {
-      id: 2,
-      text: "item 2",
-      completed: false,
-    },
-    {
-      id: 3,
-      text: "item 3",
-      completed: true,
-    },
+  
   ]);
   const [newTodoText, setNewTodoText] = useState("");
-
-  //adding new todo function below
-  const handleAddTodo = () => {
-    if (newTodoText.trim() ==="") return;
-    const newTodo: TodoItem = {
-    id: Date.now(), //not sure about this Date.now() function
-    text: newTodoText,
-    completed:false,
+useEffect(() => {
+  const loadTodos = async () => {
+    const allTodos = await fetchAllTodos();
+    setTodos(allTodos);
   };
-
-  setTodos([...todos, newTodo]);
-  setNewTodoText("");
+  loadTodos();
+}, []);
+  //adding new todo function below
+  const handleAddTodo = async () => {
+    if (newTodoText.trim() ==="") return;
+    const newTodo= await createTodo(newTodoText);
+    setTodos([...todos, newTodo]);
+    setNewTodoText("");
+  
   
 };
 
-const completeToDo = (id: number) => {
-    setTodos(
-      todos.map(todo =>
-        todo.id === id ? {...todo, completed: !todo.completed} : todo
-      )
-    );
+const completeToDo = async (id: number, completed: boolean) => {
+  const updated = await completeTodo(id, completed);
+    setTodos(todos.map(t => t.id === id ? updated : t));
   };
 
-  const deleteToDo = (id: number) => {
+  const deleteToDo = async (id: number) => {
+    await deleteTodo(id);
     setTodos(todos.filter(todo => todo.id !==id));
   };
 
@@ -63,7 +50,7 @@ const completeToDo = (id: number) => {
             text={val.text}
             completed={val.completed}
             onDelete={() => deleteToDo(val.id)}
-            onComplete={() => completeToDo(val.id)}
+            onComplete={() => completeToDo(val.id, !val.completed)}
            />
         ))}
       </ul>
