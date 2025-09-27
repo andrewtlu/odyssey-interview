@@ -29,7 +29,7 @@ export const Todo = ({ id, text, completed, onToggle, onDelete }: TodoItem) => {
     >
       <input
         type="checkbox"
-        checked={clicked}
+        checked={completed}
         readOnly
         className="w-4 h-4 accent-teal-500 cursor-pointer"
       />

@@ -15,10 +15,10 @@ export const createTodo = async (t: string) => {
   });
 };
 
-export const completeTodo = async (id: number) => {
+export const completeTodo = async (id: number, completed: boolean) => {
   return await prisma.todoItem.update({
     where: { id },
-    data: { completed: true },
+    data: { completed: completed },
   });
 };
 

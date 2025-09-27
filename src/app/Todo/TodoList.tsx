@@ -10,7 +10,9 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
   const [newTodoText, setNewTodoText] = useState("");
 
   function handleToggle(id: number) {
-    completeTodo(id);
+    const todo = todos.find((t) => t.id === id);
+    if (!todo) return;
+    completeTodo(id, !todo.completed);
     setTodos(
       todos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo,
