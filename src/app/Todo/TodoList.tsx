@@ -36,6 +36,16 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
     setTodos(prev => [...prev, newItem]); // append new item
     setNewTodoText("");                   // clear the input
   }
+
+  // The dual Generic Prop Functions, takes an ID and then returns a function
+  const toggleComplete = (id: number) => {
+    setTodos(ts => ts.map(t => (t.id === id ? { ...t, completed: !t.completed } : t)));
+  };
+
+  const deleteTodo = (id: number) => {
+    setTodos(ts => ts.filter(t => t.id !== id));
+  };
+
   return (
     <>
       <div className="font-medium text-2xl">My Todo List</div>
@@ -43,7 +53,10 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
       <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg-content w-full px-2 py-1 rounded-md flex flex-col">
         {todos.map((todo, i) => (
           <li key={todo.id ?? `todo-${i}`} className="w-full">
-            <Todo {...todo} />
+            <Todo {...todo} 
+              onToggle={() => toggleComplete(todo.id)}
+              onDelete={() => deleteTodo(todo.id)} 
+              />
           </li>
         ))}
       </ul>
