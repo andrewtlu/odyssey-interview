@@ -28,10 +28,10 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
     <>
       <div className="font-medium text-2xl">My Todo List</div>
       {}
-      <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg-content w-full px-2 py-1 rounded-md flex flex-row">
+      <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg-content w-full px-2 py-1 rounded-md flex flex-col">
         {todos.map((todo, i) => (
           <li key={todo.id ?? `todo-${i}`} className="w-full">
-          <Todo {...todo} />
+            <Todo {...todo} />
           </li>
         ))}
       </ul>
