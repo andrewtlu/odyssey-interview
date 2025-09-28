@@ -2,7 +2,6 @@
 
 import { IconPlus } from "@tabler/icons-react";
 import { Todo, TodoItem } from "./Todo";
-import { TodoProps } from "./Todo";
 import { useState } from "react";
 
 export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
@@ -38,9 +37,7 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
   }
 
   function flipCompletion(id: number) {
-    // return a function with no args
     return () => {
-      // calls React setter to return a new todo with `completed` prop fliped
       setTodos((prevTodos) =>
         prevTodos.map((item) => {
           if (item.id === id) {
@@ -71,7 +68,6 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
   return (
     <>
       <div className="font-medium text-2xl">My Todo List</div>
-      {/* Mon Sept 22 11:36am : changed added key; changed CSS `flex-col`. Task 1 done. */}
       <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg-content w-full px-2 py-1 rounded-md flex flex-col">
         {todos.map((val) => (
           <Todo
