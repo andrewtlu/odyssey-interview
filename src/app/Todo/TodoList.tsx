@@ -3,31 +3,32 @@
 import { IconPlus } from "@tabler/icons-react";
 import { Todo, TodoItem } from "./Todo";
 import { useState } from "react";
+import {
+  createTodo,
+  completeTodo,
+  deleteTodo,
+} from "../Database/actions";
 
 export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
-  const [todos, setTodos] = useState<TodoItem[]>(
-    initialTodos ?? [
-      { id: 1, text: "item 1", completed: false },
-      { id: 2, text: "item 2", completed: false },
-      { id: 3, text: "item 3", completed: true },
-    ]
-  );
+  const [todos, setTodos] = useState<TodoItem[]>(initialTodos ?? []);
   const [newTodoText, setNewTodoText] = useState("");
 
-  const addNewTodo = () => {
+  const addNewTodo = async () => {
     const text = newTodoText.trim();
     if (!text) return;
-    setTodos((prev) => prev.concat({ id: todos.length+ 1, text, completed: false }));
+    const newTodo = await createTodo(newTodoText);
+    setTodos([...todos, newTodo]);
     setNewTodoText("");
   };
 
-  const toggleTodo = (id: number) => {
-    setTodos((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
-    );
+  const toggleTodo = async (id: number) => {
+    const updated = await completeTodo(id);
+    if (!updated) return;
+    setTodos((prev) => prev.map((t) => (t.id === id ? updated : t)));
   };
 
-  const deleteTodo = (id: number) => {
+  const handleDelete = async (id: number) => {
+    await deleteTodo(id);
     setTodos((prev) => prev.filter((t) => t.id !== id));
   };
 
@@ -37,7 +38,14 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
 
       <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg- w-full px-2 py-1 rounded-md flex flex-col">
         {todos.map((val) => (
-          <Todo key={val.id} id={val.id} text={val.text} completed={val.completed} onClick={toggleTodo} onDelete={deleteTodo}/>
+          <Todo
+            key={val.id}
+            id={val.id}
+            text={val.text}
+            completed={val.completed}
+            onClick={toggleTodo}
+            onDelete={handleDelete}
+          />
         ))}
       </ul>
       <div className="flex gap-4 items-center flex-col sm:flex-row w-full">
@@ -46,7 +54,9 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
           className="rounded-full border-solid border-2 font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto bg-background text-foreground grow"
           value={newTodoText}
           onChange={(e) => setNewTodoText(e.target.value)}
-          onKeyDown={(e) => { if (e.key === "Enter") addNewTodo(); }} // enter to add
+          onKeyDown={(e) => {
+            if (e.key === "Enter") addNewTodo();
+          }} // enter to add
         />
         <button
           onClick={addNewTodo}

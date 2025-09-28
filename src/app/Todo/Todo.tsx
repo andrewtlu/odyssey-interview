@@ -6,7 +6,6 @@ export type TodoItem = {
   completed: boolean;
 };
 
-
 type TodoProps = TodoItem & {
   onClick: (id: number) => void;
   onDelete: (id: number) => void;
@@ -15,13 +14,13 @@ type TodoProps = TodoItem & {
 export const Todo = ({ id, text, completed, onClick, onDelete }: TodoProps) => {
   return (
     <div
-    onClick={() => onClick(id)}
+      onClick={() => onClick(id)}
       className="px-2 flex items-center justify-between gap-2 py-2 rounded-md cursor-pointer"
       style={{
         outline: "1px solid #0f0e0f",
         outlineOffset: "2px",
         borderRadius: "12px",
-        backgroundColor: completed ? "#685e8a" : "#a397cc", 
+        backgroundColor: completed ? "#9672ad" : "#c7a7db",
         color: "#0b0b0b",
         marginBottom: "12px",
       }}
@@ -32,7 +31,7 @@ export const Todo = ({ id, text, completed, onClick, onDelete }: TodoProps) => {
           checked={completed}
           readOnly
           className="h-5 w-5 rounded"
-          style={{ accentColor: "#c2a5e8" }} 
+          style={{ accentColor: "#b377d9" }}
           aria-label="Completed"
         />
         <span
@@ -46,7 +45,7 @@ export const Todo = ({ id, text, completed, onClick, onDelete }: TodoProps) => {
         </span>
       </label>
 
-        <button
+      <button
         onClick={(e) => {
           e.stopPropagation();
           onDelete(id);
