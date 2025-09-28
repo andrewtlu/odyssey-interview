@@ -27,14 +27,15 @@ export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
   return (
     <>
       <div className="font-medium text-2xl">My Todo List</div>
-      {/* TODO: fix me! (task 1) */}
+      {}
       <ul className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left bg-content w-full px-2 py-1 rounded-md flex flex-row">
-        {todos.map((val) => (
-          // TODO: fix me! (task 1)
-          <Todo {...val} />
+        {todos.map((todo, i) => (
+          <li key={todo.id ?? `todo-${i}`} className="w-full">
+          <Todo {...todo} />
+          </li>
         ))}
       </ul>
-      <div className="flex gap-4 items-center flex-col sm:flex-row w-full">
+      <div className="flex flex-col gap-4 w-full items-stretch">
         <input
           placeholder="Todo text"
           className="rounded-full border-solid border-2 font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto bg-background text-foreground grow"
