@@ -1,5 +1,4 @@
 "use client";
-import { TodoList } from "./TodoList";
 
 /* the information about the todo item,
   imported to TodoList.tsx  */
@@ -9,22 +8,39 @@ export type TodoItem = {
   completed: boolean;
 };
 
-export const Todo = ({ id, text, completed }: TodoItem) => {
+//
+export type TodoProps = TodoItem & {
+  onToggle: () => void;
+  onDelete: () => void;
+};
+
+export const Todo = ({
+  id,
+  text,
+  completed,
+  onToggle,
+  onDelete,
+}: TodoProps) => {
   return (
     <div className="flex flex-row gap-[32px] p-1 m-1 indent-1.5 bg-teal-800 rounded-md">
-      <label>
+      <label className="mt-1.5">
         <input
           type="checkbox"
-          className="size-3"
+          className="size-3.5"
           checked={completed}
-          onChange={() => {
-            completed = !completed;
-          }} // not working so far; but React warning on "lack onChange" disappears
+          onChange={onToggle}
         />
       </label>
       <div className={completed ? "line-through opacity-50" : ""}>
-        <div>{text}</div>
+        <div className="mt-1">{text}</div>
       </div>
+      <button
+        type="button"
+        className="font-sans font-medium ml-auto pl-1.5 pr-1.5 m-0.5 rounded-md bg-foreground text-background hover:bg-[#383838] dark:hover:bg-[#ccc] cursor-pointer"
+        onClick={onDelete}
+      >
+        Delete
+      </button>
     </div>
   );
 };
