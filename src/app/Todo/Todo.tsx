@@ -14,15 +14,9 @@ export type TodoProps = TodoItem & {
   onDelete: () => void;
 };
 
-export const Todo = ({
-  id,
-  text,
-  completed,
-  onToggle,
-  onDelete,
-}: TodoProps) => {
+export const Todo = ({ text, completed, onToggle, onDelete }: TodoProps) => {
   return (
-    <div className="flex flex-row gap-[32px] p-1 m-1 indent-1.5 bg-teal-800 rounded-md">
+    <div className="flex flex-row gap-[32px] p-1 m-1 indent-1.5 dark:bg-teal-800 bg-teal-400 rounded-md">
       <label className="mt-1.5">
         <input
           type="checkbox"

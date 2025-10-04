@@ -11,7 +11,7 @@ import {
 } from "../Database/actions";
 
 export const TodoList = ({ initialTodos }: { initialTodos?: TodoItem[] }) => {
-  const [todos, setTodos] = useState<TodoItem[]>([]);
+  const [todos, setTodos] = useState<TodoItem[]>(initialTodos ?? []);
 
   // still learning useEffect
   useEffect(() => {
