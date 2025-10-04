@@ -69,8 +69,6 @@ Once you convert `todos` to a state, add functionality to the `Add Item` button 
 
 Helpful resources: [(react states)](https://react.dev/reference/react/useState) [(react array/object states)](https://react.dev/reference/react/useState#updating-objects-and-arrays-in-state)
 
-// Todo next: ------------------------------------------------
-
 ### Task 4 -- Complete + Delete Todos
 
 Now that we can add todos, let's finish up the component by implementing functionality to complete todos and delete todos.
